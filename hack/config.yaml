@@ -1,0 +1,14 @@
+
+# CLI tool, only in development environment.
+# https://goframe.org/pages/viewpage.action?pageId=3673173
+gfcli:
+  build:
+    name:     "docxdownload"               # 编译后的可执行文件名称
+    #arch:     "all"                       # 不填默认当前系统架构，可选：386,amd64,arm,all
+    #system:   "all"                       # 不填默认当前系统平台，可选：linux,darwin,windows,all
+    mod:      "none"
+    cgo:      0
+    packSrc:  "resource,manifest,ui/dist"
+    version:  "v1.0.0"
+    output:   "./bin/docxdownload"         # 可执行文件生成路径
+    extra:    ""
