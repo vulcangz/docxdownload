@@ -5,9 +5,9 @@ import (
 	"docxdownload/internal/service"
 	"fmt"
 
-	"github.com/gingfrederik/docx"
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/osdir/docx"
 )
 
 type sDown struct{}
@@ -26,10 +26,12 @@ func (c *sDown) Create(ctx context.Context, issueNo uint) (filename string, err 
 	// add new paragraph
 	para := f.AddParagraph()
 	// add text
-	para.AddText("test")
+	para.AddTextWithSpace("test   ")
 
 	para.AddText("test font size").Size(22)
+	para.AddTextWithSpace("   ")
 	para.AddText("test color").Color("808080")
+	para.AddTextWithSpace("   ")
 	para.AddText("test font size and color").Size(22).Color("ff0000")
 
 	nextPara := f.AddParagraph()
@@ -39,11 +41,11 @@ func (c *sDown) Create(ctx context.Context, issueNo uint) (filename string, err 
 	nextPara.AddText("Documentation").Size(22).Color("red")
 
 	nextPara = f.AddParagraph()
-	nextPara.AddText("Vue’s ")
+	nextPara.AddTextWithSpace("Vue’s ")
 	nextPara.AddText("")
 	nextPara.AddLink("official documentation", `https://vuejs.org/`)
 	nextPara.AddText("")
-	nextPara.AddText(" provides you with all information you need to get started.")
+	nextPara.AddTextWithSpace(" provides you with all information you need to get started.")
 
 	t := gtime.Now().Format("Ymd")
 	filename = fmt.Sprintf("周刊第%d期（%s）.docx", issueNo, t)
